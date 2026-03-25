@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://b4jfkkgsgwysx"]
+
+[ext_resource type="FontFile" uid="uid://7ygvr72rwo4a" path="res://src/assets/fonts/Orbitron Bold.ttf" id="1_rufih"]
+
+[resource]
+font = ExtResource("1_rufih")
+font_size = 20
+font_color = Color(1, 0.819608, 0.94902, 1)

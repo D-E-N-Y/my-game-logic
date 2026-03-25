@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cptrrrtdyc7ey"]
+
+[ext_resource type="Texture2D" uid="uid://dm3wdqpxnfstk" path="res://src/ui/Assets/Icons/g1230.png" id="1_nskdl"]
+
+[resource]
+texture = ExtResource("1_nskdl")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.156863, 0.121569, 0.407843, 1)

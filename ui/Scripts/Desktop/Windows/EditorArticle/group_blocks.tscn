@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://doniyeybj04jy"]
+
+[ext_resource type="Script" path="res://src/ui/Scripts/EditorArticle/ui_group_blocks.gd" id="1_rngbn"]
+[ext_resource type="PackedScene" uid="uid://y11j7jefrknq" path="res://src/ui/Desktop/Windows/EditorArticle/block_button.tscn" id="1_swskg"]
+[ext_resource type="Texture2D" uid="uid://dm3wdqpxnfstk" path="res://src/ui/Assets/Icons/g1230.png" id="3_b17rx"]
+[ext_resource type="StyleBox" uid="uid://cptrrrtdyc7ey" path="res://src/ui/Theme/GroupBlocks/Panel.tres" id="4_yd04g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpm1q"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+border_width_left = 2
+border_width_top = 2
+border_color = Color(0.372549, 0.364706, 0.788235, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uwt5t"]
+texture = ExtResource("3_b17rx")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.155352, 0.121571, 0.407775, 1)
+
+[node name="GroupBlocks" type="Panel" node_paths=PackedStringArray("title", "BlockButtonsContainer")]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(250, 180)
+offset_right = 230.0
+offset_bottom = 180.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hpm1q")
+script = ExtResource("1_rngbn")
+blockButtonPrefab = ExtResource("1_swskg")
+title = NodePath("VBoxContainer/TypeLabel")
+BlockButtonsContainer = NodePath("VBoxContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/BlockButtonsContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TypeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxTexture_uwt5t")
+text = "HEADERS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_yd04g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BlockButtonsContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/separation = 10
+
+[node name="BlockButton" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/BlockButtonsContainer" instance=ExtResource("1_swskg")]
+visible = false
+layout_mode = 2
+
+[node name="BlockButton2" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/BlockButtonsContainer" instance=ExtResource("1_swskg")]
+visible = false
+layout_mode = 2
+
+[node name="BlockButton3" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/ScrollContainer/BlockButtonsContainer" instance=ExtResource("1_swskg")]
+visible = false
+layout_mode = 2

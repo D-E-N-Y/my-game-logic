@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://y11j7jefrknq"]
+
+[ext_resource type="StyleBox" uid="uid://dlovkam0turif" path="res://src/ui/Theme/BlockButton/HoverButton.tres" id="1_i4wlt"]
+[ext_resource type="Script" path="res://src/ui/Scripts/EditorArticle/ui_block_button.gd" id="1_v7vfw"]
+[ext_resource type="StyleBox" uid="uid://vycn3t5jgtjo" path="res://src/ui/Theme/BlockButton/PressedButton.tres" id="2_2571p"]
+[ext_resource type="PackedScene" uid="uid://b6o2jlhby1slo" path="res://src/ui/Desktop/Windows/EditorArticle/block.tscn" id="2_ve508"]
+[ext_resource type="Texture2D" uid="uid://bbaov0c1qv75m" path="res://src/ui/Assets/Icons/circle-slice.png" id="3_e7nc0"]
+[ext_resource type="StyleBox" uid="uid://nmjub00pljix" path="res://src/ui/Theme/BlockButton/NormalButton.tres" id="3_lxwbj"]
+
+[node name="BlockButton" type="Button" node_paths=PackedStringArray("infoDiagram", "typeLaber")]
+custom_minimum_size = Vector2(90, 100)
+theme_override_styles/hover = ExtResource("1_i4wlt")
+theme_override_styles/pressed = ExtResource("2_2571p")
+theme_override_styles/normal = ExtResource("3_lxwbj")
+script = ExtResource("1_v7vfw")
+blockPrefab = ExtResource("2_ve508")
+infoDiagram = NodePath("MarginContainer/VBoxContainer/InfoDiagram")
+typeLaber = NodePath("MarginContainer/VBoxContainer/TypeLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="InfoDiagram" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 54.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = ExtResource("3_e7nc0")
+texture_progress = ExtResource("3_e7nc0")
+tint_under = Color(0.8, 0.266667, 0.254902, 1)
+tint_progress = Color(0.235294, 0.964706, 0.505882, 1)
+
+[node name="TypeLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "propaganda"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

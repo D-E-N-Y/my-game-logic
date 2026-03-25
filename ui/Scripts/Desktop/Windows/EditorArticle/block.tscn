@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6o2jlhby1slo"]
+
+[ext_resource type="Script" path="res://src/ui/Scripts/EditorArticle/ui_block.gd" id="1_7b47w"]
+[ext_resource type="StyleBox" uid="uid://cfy8ynjtjqecu" path="res://src/ui/Theme/Block/BlockPanel.tres" id="2_7ijsy"]
+[ext_resource type="StyleBox" uid="uid://cn6fluf13run5" path="res://src/ui/Theme/Block/Connector.tres" id="3_mnt25"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8gtq"]
+size = Vector2(300, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a4x7"]
+size = Vector2(105, 14.2825)
+
+[node name="Block" type="CharacterBody2D" node_paths=PackedStringArray("typeLabel")]
+position = Vector2(466, 158)
+collision_layer = 16
+collision_mask = 24
+platform_floor_layers = 4294901760
+script = ExtResource("1_7b47w")
+typeLabel = NodePath("Button/TypeLabel")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(220, 45)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.5
+offset_right = 300.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_7ijsy")
+
+[node name="TypeLabel" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -14.0
+offset_right = 33.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "BLOCK"
+
+[node name="Connector" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_top = -8.5
+offset_right = 52.0
+offset_bottom = 1.5
+grow_horizontal = 2
+pivot_offset = Vector2(10, 10)
+theme_override_styles/panel = ExtResource("3_mnt25")
+
+[node name="Connector3" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -1.5
+offset_right = 52.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(10, 10)
+theme_override_styles/panel = ExtResource("3_mnt25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(150, 43)
+shape = SubResource("RectangleShape2D_n8gtq")
+
+[node name="AreaTop" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="TopConnect" type="CollisionShape2D" parent="AreaTop"]
+position = Vector2(150, -7)
+shape = SubResource("RectangleShape2D_4a4x7")
+
+[node name="AreaBotton" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="BottonConnect" type="CollisionShape2D" parent="AreaBotton"]
+position = Vector2(150, 93)
+shape = SubResource("RectangleShape2D_4a4x7")
+
+[connection signal="button_down" from="Button" to="." method="StartDrag"]
+[connection signal="button_up" from="Button" to="." method="StopDrag"]
+[connection signal="area_entered" from="AreaBotton" to="." method="AreaBottonEntered"]
+[connection signal="area_exited" from="AreaBotton" to="." method="AreaBottonExited"]

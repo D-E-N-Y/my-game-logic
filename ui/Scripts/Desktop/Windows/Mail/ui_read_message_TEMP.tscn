@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bevfiryvcptk2"]
+
+[ext_resource type="Texture2D" uid="uid://cm47g6yufrtn" path="res://src/ui/Assets/Icons/element 1.png" id="1_bh270"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5twft"]
+texture = ExtResource("1_bh270")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.187467, 0.149065, 0.477533, 1)
+
+[node name="ui_message" type="Control"]
+custom_minimum_size = Vector2(500, 120)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5twft")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "TITLE"
+
+[node name="TitleLabel2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "AUTHOR"
+
+[node name="MainTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message messagemessage message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message"
+autowrap_mode = 3
+clip_text = true

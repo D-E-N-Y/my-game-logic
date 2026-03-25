@@ -1,0 +1,486 @@
+[gd_scene load_steps=24 format=3 uid="uid://cagh0p78f01sl"]
+
+[ext_resource type="Script" path="res://src/ui/Scripts/PlayerInfo/ui_player_info_window.gd" id="1_8i7ox"]
+[ext_resource type="Texture2D" uid="uid://ei7xvrm27g62" path="res://src/ui/Assets/Icons/circle.png" id="3_edgvu"]
+[ext_resource type="Texture2D" uid="uid://clne2m3qsuard" path="res://src/ui/Assets/Icons/g1271.png" id="3_eff2h"]
+[ext_resource type="Texture2D" uid="uid://dm3wdqpxnfstk" path="res://src/ui/Assets/Icons/g1230.png" id="4_uc20a"]
+[ext_resource type="FontFile" uid="uid://d27fjty4itta0" path="res://src/assets/fonts/Orbitron Medium.otf" id="5_3poog"]
+[ext_resource type="Texture2D" uid="uid://bopm501ricyvy" path="res://src/ui/Assets/Image/Bi.png" id="6_1jv0r"]
+[ext_resource type="LabelSettings" uid="uid://dw85pyv2cd0p" path="res://src/ui/Theme/Font/tittleTopPanel.tres" id="6_2icur"]
+[ext_resource type="FontFile" uid="uid://7ygvr72rwo4a" path="res://src/assets/fonts/Orbitron Bold.ttf" id="7_h2xvw"]
+[ext_resource type="StyleBox" uid="uid://b75ywbppmaij5" path="res://src/ui/Theme/Panel.tres" id="7_v2mu2"]
+[ext_resource type="LabelSettings" uid="uid://ckv7e6a0a5bno" path="res://src/ui/Theme/Font/wanted.tres" id="10_wlqmy"]
+[ext_resource type="LabelSettings" uid="uid://b4jfkkgsgwysx" path="res://src/ui/Theme/Font/tittle.tres" id="11_wvsrp"]
+[ext_resource type="StyleBox" uid="uid://cptrrrtdyc7ey" path="res://src/ui/Theme/GroupBlocks/Panel.tres" id="12_0lpfe"]
+[ext_resource type="Texture2D" uid="uid://b34tjvnu8yev4" path="res://src/assets/textures/finger print 3.png" id="12_17dqo"]
+[ext_resource type="Texture2D" uid="uid://bi0hhfw1byaw3" path="res://src/assets/textures/finger print 2.png" id="13_yh1it"]
+[ext_resource type="Texture2D" uid="uid://bj1s76l1amvja" path="res://src/assets/textures/finger print 1.png" id="14_ng56j"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_noxgd"]
+texture = ExtResource("3_eff2h")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.321569, 0.27451, 0.74902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x76ek"]
+texture = ExtResource("4_uc20a")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.321569, 0.27451, 0.74902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_loamn"]
+texture = ExtResource("3_edgvu")
+modulate_color = Color(0.945098, 0.00392157, 0.490196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_87qu5"]
+bg_color = Color(0.0156863, 0, 0.0627451, 0.901961)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_owx0h"]
+texture = ExtResource("3_eff2h")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+modulate_color = Color(0.321569, 0.27451, 0.74902, 1)
+draw_center = false
+
+[sub_resource type="Animation" id="Animation_fuxgk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control/FingerPrint1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control/FingerPrint2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control/FingerPrint3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rfuub"]
+resource_name = "finger print change"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control/FingerPrint1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control/FingerPrint2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control/FingerPrint3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bvdtn"]
+_data = {
+"RESET": SubResource("Animation_fuxgk"),
+"finger print change": SubResource("Animation_rfuub")
+}
+
+[node name="player_info_window" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8i7ox")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0, 0.0627451, 0.901961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_noxgd")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="LeftPanel" type="Panel" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_x76ek")
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer/LeftPanel"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -6.0
+offset_right = 14.0
+offset_bottom = 6.0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_loamn")
+
+[node name="MiddlePanel" type="Panel" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_x76ek")
+
+[node name="Label" type="Label" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer/MiddlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 10
+text = "PLAYER INFO"
+label_settings = ExtResource("6_2icur")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightPanel" type="Panel" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_x76ek")
+
+[node name="Window" type="Panel" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_87qu5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 5
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_owx0h")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_1jv0r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("7_h2xvw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("7_v2mu2")
+text = "MOST WANTED"
+label_settings = ExtResource("10_wlqmy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoPanel" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.75
+theme_override_constants/separation = 5
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Window/HBoxContainer/InfoPanel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("7_h2xvw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("7_v2mu2")
+text = "INFO"
+label_settings = ExtResource("11_wvsrp")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_v2mu2")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "NAME: *****"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "ALIAS: B, BADGER"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "AGE: ??"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "SEX: MALE"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "STATUS: WANTED"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label6" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "BOUNTY: 250.000"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(220, 233.355)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("12_0lpfe")
+
+[node name="Control" type="Control" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FingerPrint3" type="TextureRect" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control"]
+visible = false
+modulate = Color(1, 0.819608, 0.94902, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 455.0
+offset_bottom = 484.645
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.326027, 0.326027)
+texture = ExtResource("12_17dqo")
+expand_mode = 1
+
+[node name="FingerPrint2" type="TextureRect" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control"]
+visible = false
+modulate = Color(1, 0.819608, 0.94902, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 405.0
+offset_bottom = 435.645
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3425, 0.3425)
+texture = ExtResource("13_yh1it")
+
+[node name="FingerPrint1" type="TextureRect" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/Panel/Control"]
+modulate = Color(1, 0.819608, 0.94902, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.977
+offset_right = 554.0
+offset_bottom = 573.012
+scale = Vector2(0.284595, 0.284595)
+texture = ExtResource("14_ng56j")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 68.865)
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("5_3poog")
+theme_override_font_sizes/font_size = 20
+text = "B has not been seen working for the corporation or its partners.
+Possesses critical information for the corporation. His intellectual abilities are recognized by various groups of cyberpunks throughout the city.
+Possibly a sociopath or pretending to be one. Pragmatic.
+Somehow connected to Flint's group, but due to his reputation, is not a member of it.
+Suspected of interfering with the Bubble's plan and is a 
+potential danger."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="finger print animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bvdtn")
+}
+autoplay = "finger print change"
+
+[connection signal="button_up" from="VBoxContainer/TopPanel/MarginContainer/HBoxContainer/LeftPanel/CloseButton" to="." method="CloseWindow"]

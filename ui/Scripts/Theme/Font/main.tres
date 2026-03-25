@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dj4ih7sbwp28w"]
+
+[ext_resource type="FontFile" uid="uid://d27fjty4itta0" path="res://src/assets/fonts/Orbitron Medium.otf" id="1_ypg8j"]
+
+[resource]
+font = ExtResource("1_ypg8j")
+font_size = 12
+font_color = Color(1, 0.819608, 0.94902, 1)

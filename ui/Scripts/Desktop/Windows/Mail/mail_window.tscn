@@ -1,0 +1,347 @@
+[gd_scene load_steps=22 format=3 uid="uid://d7cuh3nmymkv"]
+
+[ext_resource type="Texture2D" uid="uid://dm3wdqpxnfstk" path="res://src/ui/Assets/Icons/g1230.png" id="1_0ojnt"]
+[ext_resource type="StyleBox" uid="uid://bu3k62l2y2fi2" path="res://src/ui/Theme/TopPanel.tres" id="1_6cryd"]
+[ext_resource type="Script" path="res://src/ui/Scripts/Mail/ui_mail_window.gd" id="1_okucq"]
+[ext_resource type="Texture2D" uid="uid://cm47g6yufrtn" path="res://src/ui/Assets/Icons/element 1.png" id="2_h5s1q"]
+[ext_resource type="PackedScene" uid="uid://cjf3cp37nmrk4" path="res://src/ui/Desktop/Windows/Mail/ui_message.tscn" id="3_dke17"]
+[ext_resource type="Texture2D" uid="uid://ei7xvrm27g62" path="res://src/ui/Assets/Icons/circle.png" id="3_wgcv1"]
+[ext_resource type="StyleBox" path="res://src/ui/Theme/TittlePanel_2.tres" id="4_yjhhd"]
+[ext_resource type="LabelSettings" uid="uid://dw85pyv2cd0p" path="res://src/ui/Theme/Font/tittleTopPanel.tres" id="5_nr8tf"]
+[ext_resource type="LabelSettings" uid="uid://b4jfkkgsgwysx" path="res://src/ui/Theme/Font/tittle.tres" id="6_k28x6"]
+[ext_resource type="StyleBox" path="res://src/ui/Theme/TittlePanel.tres" id="8_oxo8q"]
+[ext_resource type="LabelSettings" uid="uid://ccqkh47y2eb6g" path="res://src/ui/Theme/Font/subheader.tres" id="11_fagyv"]
+[ext_resource type="FontFile" uid="uid://d27fjty4itta0" path="res://src/assets/fonts/Orbitron Medium.otf" id="11_ugdh2"]
+[ext_resource type="StyleBox" uid="uid://dg1q277dqqujs" path="res://src/ui/Theme/Button/InPanel/HoverButton.tres" id="13_esm78"]
+[ext_resource type="LabelSettings" uid="uid://dj4ih7sbwp28w" path="res://src/ui/Theme/Font/main.tres" id="13_wugov"]
+[ext_resource type="StyleBox" uid="uid://d2tx0rk2dggnn" path="res://src/ui/Theme/Button/InPanel/PressedButton.tres" id="14_isv4c"]
+[ext_resource type="StyleBox" uid="uid://bujmnchgn0hhb" path="res://src/ui/Theme/Button/InPanel/NormalButton.tres" id="15_p4di5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eeode"]
+texture = ExtResource("1_0ojnt")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.321569, 0.27451, 0.74902, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4etb1"]
+texture = ExtResource("3_wgcv1")
+modulate_color = Color(0.992826, 0.38719, 0.309296, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kk3b"]
+bg_color = Color(0.0156863, 0, 0.0627451, 0.901961)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j3cf6"]
+texture = ExtResource("2_h5s1q")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.321569, 0.27451, 0.74902, 1)
+
+[sub_resource type="GDScript" id="GDScript_or636"]
+script/source = "extends Button
+class_name CreateArticleButton
+
+# UI
+@onready var desktop : UIDesktop = find_parent(\"desktop\")
+
+# data
+var news : News
+
+func CreateArticle():
+	if !news:
+		print(\"no select news\")
+		return
+	
+	if desktop.editor_article_window.IsEdit():
+		print(\"You already creating article\")
+		return
+	
+	desktop._on_editor_button_pressed()
+	desktop.editor_article_window.SetupBlocks(news.blocks)
+"
+
+[node name="mail_window" type="Control" node_paths=PackedStringArray("messageContainer", "TittleLabel", "AutorLabel", "MainLabel", "ThreatBottonPanel", "SuggestionBottonPanel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_okucq")
+messageContainer = NodePath("VBoxContainer/Window/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer/MessagesContainer")
+messagePrefab = ExtResource("3_dke17")
+TittleLabel = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/TittleLabel")
+AutorLabel = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/AutorLabel")
+MainLabel = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/MainLabel")
+ThreatBottonPanel = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/ThreatBottonPanel")
+SuggestionBottonPanel = NodePath("VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/SuggestionBottonPanel")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0, 0.0627451, 0.901961)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_6cryd")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="LeftPanel" type="Panel" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeode")
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer/LeftPanel"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 2.0
+offset_top = -6.0
+offset_right = 14.0
+offset_bottom = 6.0
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_4etb1")
+
+[node name="MiddlePanel" type="Panel" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeode")
+
+[node name="Label" type="Label" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer/MiddlePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "MAIL"
+label_settings = ExtResource("5_nr8tf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RightPanel" type="Panel" parent="VBoxContainer/TopPanel/MarginContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_eeode")
+
+[node name="Window" type="Panel" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_8kk3b")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Window"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("4_yjhhd")
+text = "MESSAGES"
+label_settings = ExtResource("6_k28x6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="MessagesContainer" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="InfoPanel" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/Window/HBoxContainer/InfoPanel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = ExtResource("8_oxo8q")
+text = "INFO"
+label_settings = ExtResource("6_k28x6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_j3cf6")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="SuggestionMessage" type="VBoxContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="TittleLabel" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+label_settings = ExtResource("6_k28x6")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AutorLabel" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 14
+label_settings = ExtResource("11_fagyv")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MainLabel" type="Label" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage"]
+layout_mode = 2
+size_flags_vertical = 1
+label_settings = ExtResource("13_wugov")
+horizontal_alignment = 3
+autowrap_mode = 3
+
+[node name="ThreatBottonPanel" type="HBoxContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage"]
+layout_mode = 2
+alignment = 1
+
+[node name="OkButton" type="Button" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/ThreatBottonPanel"]
+visible = false
+custom_minimum_size = Vector2(125, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("11_ugdh2")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = ExtResource("13_esm78")
+theme_override_styles/pressed = ExtResource("14_isv4c")
+theme_override_styles/normal = ExtResource("15_p4di5")
+text = "OK"
+script = SubResource("GDScript_or636")
+
+[node name="SuggestionBottonPanel" type="HBoxContainer" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ApplyButton" type="Button" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/SuggestionBottonPanel"]
+custom_minimum_size = Vector2(125, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("11_ugdh2")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = ExtResource("13_esm78")
+theme_override_styles/pressed = ExtResource("14_isv4c")
+theme_override_styles/normal = ExtResource("15_p4di5")
+text = "APPLY"
+script = SubResource("GDScript_or636")
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/SuggestionBottonPanel"]
+custom_minimum_size = Vector2(125, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 0.819608, 0.94902, 1)
+theme_override_fonts/font = ExtResource("11_ugdh2")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = ExtResource("13_esm78")
+theme_override_styles/pressed = ExtResource("14_isv4c")
+theme_override_styles/normal = ExtResource("15_p4di5")
+text = "CANCEL"
+script = SubResource("GDScript_or636")
+
+[connection signal="button_up" from="VBoxContainer/TopPanel/MarginContainer/HBoxContainer/LeftPanel/CloseButton" to="." method="CloseWindow"]
+[connection signal="button_up" from="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/ThreatBottonPanel/OkButton" to="." method="Ok"]
+[connection signal="button_up" from="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/SuggestionBottonPanel/ApplyButton" to="." method="Apply"]
+[connection signal="button_up" from="VBoxContainer/Window/HBoxContainer/InfoPanel/ScrollContainer/MarginContainer/SuggestionMessage/SuggestionBottonPanel/CancelButton" to="." method="Cancel"]

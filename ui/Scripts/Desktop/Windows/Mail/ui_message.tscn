@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjf3cp37nmrk4"]
+
+[ext_resource type="StyleBox" uid="uid://bno155qv8jfsv" path="res://src/ui/Theme/Button/HoverButton.tres" id="1_1t15k"]
+[ext_resource type="Texture2D" uid="uid://cm47g6yufrtn" path="res://src/ui/Assets/Icons/element 1.png" id="1_ab8bc"]
+[ext_resource type="Script" path="res://src/ui/Scripts/Mail/ui_message.gd" id="1_fqxak"]
+[ext_resource type="LabelSettings" uid="uid://b4jfkkgsgwysx" path="res://src/ui/Theme/Font/tittle.tres" id="2_jvs7t"]
+[ext_resource type="StyleBox" uid="uid://detouiwo7ang0" path="res://src/ui/Theme/Button/PressedButton.tres" id="2_m30qu"]
+[ext_resource type="LabelSettings" uid="uid://ccqkh47y2eb6g" path="res://src/ui/Theme/Font/subheader.tres" id="3_1xrbt"]
+[ext_resource type="StyleBox" uid="uid://b552ya71fj7iy" path="res://src/ui/Theme/Button/NormalButton.tres" id="3_a342x"]
+[ext_resource type="LabelSettings" uid="uid://dj4ih7sbwp28w" path="res://src/ui/Theme/Font/main.tres" id="4_rglxi"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5twft"]
+texture = ExtResource("1_ab8bc")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+modulate_color = Color(0.321569, 0.27451, 0.74902, 1)
+
+[node name="ui_message" type="Button" node_paths=PackedStringArray("TitleLabel", "AuthorLabel", "MainTextLabel")]
+custom_minimum_size = Vector2(500, 120)
+offset_right = 500.0
+offset_bottom = 120.0
+theme_override_styles/hover = ExtResource("1_1t15k")
+theme_override_styles/pressed = ExtResource("2_m30qu")
+theme_override_styles/normal = ExtResource("3_a342x")
+script = ExtResource("1_fqxak")
+TitleLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/TitleLabel")
+AuthorLabel = NodePath("MarginContainer/VBoxContainer/HBoxContainer/AuthorLabel")
+MainTextLabel = NodePath("MarginContainer/VBoxContainer/MainTextLabel")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5twft")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "TITLE"
+label_settings = ExtResource("2_jvs7t")
+
+[node name="AuthorLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 10
+text = "AUTHOR"
+label_settings = ExtResource("3_1xrbt")
+
+[node name="MainTextLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message messagemessage message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message message"
+label_settings = ExtResource("4_rglxi")
+autowrap_mode = 3
+clip_text = true
+
+[connection signal="button_up" from="." to="." method="ViewInfo"]

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dw85pyv2cd0p"]
+
+[ext_resource type="FontFile" uid="uid://d27fjty4itta0" path="res://src/assets/fonts/Orbitron Medium.otf" id="1_mirlb"]
+
+[resource]
+font = ExtResource("1_mirlb")
+font_size = 10
+font_color = Color(1, 0.819608, 0.94902, 1)

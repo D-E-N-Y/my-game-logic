@@ -1,0 +1,237 @@
+[gd_scene load_steps=28 format=3 uid="uid://dc6jux0td5wit"]
+
+[ext_resource type="Script" path="res://src/ui/Scripts/Deskctop/ui_desktop.gd" id="1_rfntj"]
+[ext_resource type="Texture2D" uid="uid://sjwl4hyrngck" path="res://src/ui/Assets/Image/wallpaper.jpg" id="2_mboob"]
+[ext_resource type="PackedScene" uid="uid://bcg3wqpcj36eh" path="res://src/ui/Desktop/Windows/News/ui_news_window.tscn" id="3_unms2"]
+[ext_resource type="PackedScene" uid="uid://cuo8d8nrde6c0" path="res://src/ui/Desktop/Windows/EditorArticle/editor_article_window.tscn" id="4_4fefp"]
+[ext_resource type="PackedScene" uid="uid://f531rltmj45b" path="res://src/ui/Desktop/Windows/PublishedArticles/published_articles_window.tscn" id="5_sn1ax"]
+[ext_resource type="PackedScene" uid="uid://d7cuh3nmymkv" path="res://src/ui/Desktop/Windows/Mail/mail_window.tscn" id="6_daxou"]
+[ext_resource type="Texture2D" uid="uid://b30db783sn1qk" path="res://src/ui/Assets/Icons/news.png" id="6_vifps"]
+[ext_resource type="PackedScene" uid="uid://cagh0p78f01sl" path="res://src/ui/Desktop/Windows/PlayerInfo/player_info_window.tscn" id="7_er7lw"]
+[ext_resource type="Texture2D" uid="uid://cc23pk2dvlggc" path="res://src/ui/Assets/Icons/editor.png" id="7_xuxkq"]
+[ext_resource type="StyleBox" uid="uid://bu3k62l2y2fi2" path="res://src/ui/Theme/TopPanel.tres" id="8_d56iy"]
+[ext_resource type="Texture2D" uid="uid://dk82jd0yaveea" path="res://src/ui/Assets/Icons/articles.png" id="8_k1qsl"]
+[ext_resource type="Shader" path="res://src/assets/shaders/GodotRetro/Screen Shaders/TV.gdshader" id="9_d6vbc"]
+[ext_resource type="Texture2D" uid="uid://pstfc5rh8lf6" path="res://src/ui/Assets/Icons/g1314.png" id="12_thrxu"]
+[ext_resource type="Texture2D" uid="uid://bsysyehi50sxe" path="res://src/ui/Assets/Icons/info.png" id="13_s0dc5"]
+[ext_resource type="AudioStream" uid="uid://qfamp80368ve" path="res://src/assets/sounds/mouse click.ogg" id="15_m5fj5"]
+[ext_resource type="AudioStream" uid="uid://bd246ye1iueh2" path="res://src/assets/sounds/you got mail.ogg" id="16_3r6j1"]
+[ext_resource type="FontFile" uid="uid://bc4xx37b0i0oa" path="res://src/assets/fonts/Vipnagorgialla Rg.otf" id="17_yqiqd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxcb3"]
+texture = ExtResource("2_mboob")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0vymq"]
+texture = ExtResource("6_vifps")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eqxws"]
+texture = ExtResource("7_xuxkq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_as6cu"]
+texture = ExtResource("8_k1qsl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iatr3"]
+texture = ExtResource("12_thrxu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xbixi"]
+texture = ExtResource("13_s0dc5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gxx87"]
+shader = ExtResource("9_d6vbc")
+shader_parameter/vertJerkOpt = 0.0
+shader_parameter/vertMovementOpt = 0.0
+shader_parameter/bottomStaticOpt = 0.0
+shader_parameter/bottomStaticStrenth = 0.7
+shader_parameter/scalinesOpt = 0.8
+shader_parameter/rgbOffsetOpt = 0.0
+shader_parameter/horzFuzzOpt = 0.05
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1852h"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("15_m5fj5")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xu1s"]
+bg_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gin48"]
+font = ExtResource("17_yqiqd")
+font_size = 24
+font_color = Color(0.63717, 0.648291, 0.73461, 1)
+
+[node name="desktop" type="Control" node_paths=PackedStringArray("editor_article_window", "news_window", "published_articles_window", "mail_window", "player_info", "mouse_click", "mail_sound", "warning_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rfntj")
+editor_article_window = NodePath("Wallpaper/VBoxContainer/Windows/editor_article_window")
+news_window = NodePath("Wallpaper/VBoxContainer/Windows/news_window")
+published_articles_window = NodePath("Wallpaper/VBoxContainer/Windows/published_articles_window")
+mail_window = NodePath("Wallpaper/VBoxContainer/Windows/mail_window")
+player_info = NodePath("Wallpaper/VBoxContainer/Windows/player_info_window")
+mouse_click = NodePath("mouse click")
+mail_sound = NodePath("mail")
+warning_label = NodePath("WarningLabel")
+
+[node name="Wallpaper" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_mxcb3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Wallpaper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Windows" type="MarginContainer" parent="Wallpaper/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="news_window" parent="Wallpaper/VBoxContainer/Windows" node_paths=PackedStringArray("desktop") instance=ExtResource("3_unms2")]
+visible = false
+layout_mode = 2
+desktop = NodePath("../../../..")
+
+[node name="editor_article_window" parent="Wallpaper/VBoxContainer/Windows" node_paths=PackedStringArray("desktop") instance=ExtResource("4_4fefp")]
+visible = false
+layout_mode = 2
+desktop = NodePath("../../../..")
+
+[node name="published_articles_window" parent="Wallpaper/VBoxContainer/Windows" node_paths=PackedStringArray("desktop") instance=ExtResource("5_sn1ax")]
+visible = false
+layout_mode = 2
+desktop = NodePath("../../../..")
+
+[node name="mail_window" parent="Wallpaper/VBoxContainer/Windows" node_paths=PackedStringArray("desktop") instance=ExtResource("6_daxou")]
+visible = false
+layout_mode = 2
+desktop = NodePath("../../../..")
+
+[node name="player_info_window" parent="Wallpaper/VBoxContainer/Windows" node_paths=PackedStringArray("desktop") instance=ExtResource("7_er7lw")]
+visible = false
+layout_mode = 2
+desktop = NodePath("../../../..")
+
+[node name="BottonPenel" type="Panel" parent="Wallpaper/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("8_d56iy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Wallpaper/VBoxContainer/BottonPenel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 7
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 7
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Wallpaper/VBoxContainer/BottonPenel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="NewsButton" type="Button" parent="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer" groups=["btn"]]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_0vymq")
+
+[node name="EditorButton" type="Button" parent="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer" groups=["btn"]]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_eqxws")
+
+[node name="ArticlesButton" type="Button" parent="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer" groups=["btn"]]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_as6cu")
+
+[node name="MailButton" type="Button" parent="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer" groups=["btn"]]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_iatr3")
+
+[node name="PlayerInfoButton" type="Button" parent="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer" groups=["btn"]]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_xbixi")
+
+[node name="fx" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="fx"]
+material = SubResource("ShaderMaterial_gxx87")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="mouse click" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_1852h")
+volume_db = -5.0
+
+[node name="mail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_3r6j1")
+volume_db = -5.0
+
+[node name="WarningLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.679
+anchor_top = 0.04
+anchor_right = 0.979
+anchor_bottom = 0.086
+offset_left = -0.208008
+offset_top = 0.079998
+offset_right = 0.192017
+offset_bottom = 0.271999
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1xu1s")
+text = "1 NEW MAIL MESSAGE"
+label_settings = SubResource("LabelSettings_gin48")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer/NewsButton" to="." method="_on_news_button_pressed"]
+[connection signal="pressed" from="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer/EditorButton" to="." method="_on_editor_button_pressed"]
+[connection signal="pressed" from="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer/ArticlesButton" to="." method="_on_articles_button_pressed"]
+[connection signal="pressed" from="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer/MailButton" to="." method="OpenMail"]
+[connection signal="pressed" from="Wallpaper/VBoxContainer/BottonPenel/MarginContainer/HBoxContainer/PlayerInfoButton" to="." method="OpenPlayerInfo"]

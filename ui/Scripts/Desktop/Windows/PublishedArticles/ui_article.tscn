@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsmcc5c2hnoha"]
+
+[ext_resource type="Script" path="res://src/ui/Scripts/Article/ui_article.gd" id="1_qjw3x"]
+[ext_resource type="StyleBox" uid="uid://bno155qv8jfsv" path="res://src/ui/Theme/Button/HoverButton.tres" id="1_tdwac"]
+[ext_resource type="StyleBox" uid="uid://detouiwo7ang0" path="res://src/ui/Theme/Button/PressedButton.tres" id="2_hkw8v"]
+[ext_resource type="StyleBox" uid="uid://b552ya71fj7iy" path="res://src/ui/Theme/Button/NormalButton.tres" id="3_np034"]
+
+[node name="Article" type="Button" node_paths=PackedStringArray("ui_article")]
+custom_minimum_size = Vector2(670, 100)
+theme_override_font_sizes/font_size = 14
+theme_override_styles/hover = ExtResource("1_tdwac")
+theme_override_styles/pressed = ExtResource("2_hkw8v")
+theme_override_styles/normal = ExtResource("3_np034")
+text = "ARTICLE TITLE"
+script = ExtResource("1_qjw3x")
+ui_article = NodePath(".")
+
+[connection signal="pressed" from="." to="." method="ViewInfo"]
