@@ -1,1 +1,1 @@
-This is my specific contribution to the [Project Name] team project.
+This is my specific contribution to the Plan B: Destroy The Bubble team project.
